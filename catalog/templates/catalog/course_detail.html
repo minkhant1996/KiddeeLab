@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Course Name: {{ course.name }}</h1>
+  <img src="{{ course.image.url }}" width="250" height="250" />
+  <p><strong>Price:</strong> {{ course.price }}</p>
+  <p><strong>Category:</strong> {{ course.category.all|join:", " }}</p>
+  <p><strong>Age Recommendation:</strong> {{ course.age_recommend.all|join:", " }}</p>
+  <p><strong>Description:</strong> {{ course.description }}</p>
+  <p><strong>Duration:</strong> {{ course.duration }}</p>
+  <p><strong>Teacher:</strong> <a href="/catalog/Teacher/{{course.teacher.id}}">{{ course.teacher}}</a></p>
+  
+{% endblock %}
+
+

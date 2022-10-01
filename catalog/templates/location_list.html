@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+
+{% for locations in locations %}
+  <h3>{{ locations.name}}</h3>
+  <ul>
+  <li>{{ locations.Address}}</li>
+  <li>{{ locations.Ph}}</li>
+  </ul>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

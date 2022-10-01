@@ -1,0 +1,114 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  }
+  .row {
+    display: flex;
+  }
+
+  /* Create two  columns that sits next to each other */
+  .column {
+  float: left;
+  margin-top: 20px;
+  }
+
+  .left {
+    width: 20%;
+    padding-left: 20px;
+  }
+
+  .right {
+    width: 80%;
+    padding-left: 20px;
+  }
+
+  .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color:rgb(149, 219, 217);
+  text-align:center;
+  transition: 0.3s;
+  width:250px;
+  }
+
+  .card1 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color:rgb(105, 246, 126);
+    text-align:center;
+    transition: 0.3s;
+    width:250px;
+  }
+
+  </style>
+
+<div class="row">
+
+  <div class="column left">
+    <ul style="text-align:center">
+      <li class="card1">
+        <h3 style="text-align:center">Category</h3>
+        <ul style="text-align:center">
+          <li>
+            <a href = "/catalog/Course/" class = "selected m-8" >All Categories</a> </li>
+          <li>
+            {% for category in category_list %}
+            <li>
+              <a  href="/catalog/Course/?category_list={{category.id}} "> {{category.name}}</a>
+            </li>
+              {% endfor %}
+          </li>
+        </ul>
+      </li>
+
+      <li class="card1">
+        <h3 style="text-align:center">Age Recommendation</h3>
+        <ul style="text-align:center">
+          <li>
+            <a href = "/catalog/Course/" class = "selected m-8" >All Ages</a> </li>
+          <li>
+            {% for age in age_list %}
+            <li>
+              <a  href="/catalog/Course/?age_list={{age.id}} "> {{age.age_limit}}</a>
+            </li>
+              {% endfor %}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="column right">
+
+    <h1>Course List</h1>
+    {% if course_list %}
+    <ul>
+      {% for course in course_list %}
+          <li class = "card">
+            <a href="{{ course.get_absolute_url }}">{{ course.name }}</a>
+            <p></p>
+            <img src="{{ course.image.url }}" width="100" height="100" />
+            <p><strong>Price:</strong> {{ course.price }}</p>
+          </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no courses in the store.</p>
+    {% endif %}
+
+  </div>
+
+</div>
+
+
+
+{% endblock %}

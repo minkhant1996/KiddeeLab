@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <style>
+    .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color:rgb(149, 219, 217);
+    text-align:left;
+    transition: 0.3s;
+    padding-bottom: 0.1px;
+    }
+  </style>
+
+  <h2 >Teacher Name:  <span style="color:blue"> {{ teacher.name }} </span></h2>
+  <ul>
+    <li class = "card">
+      <h3 style="color: rgb(26, 128, 31)">Work Experience</h3>
+      <p>{{ teacher.work_experience|linebreaks }}</p>
+    </li>
+
+    <li class = "card">
+      <h3 style="color: rgb(26, 128, 31)">Background Education</h3>
+      <p>{{ teacher.education|linebreaks }}</p>
+    </li>
+  </ul>
+{% endblock %}
+
+
